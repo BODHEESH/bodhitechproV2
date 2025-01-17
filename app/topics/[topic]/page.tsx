@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { reactQuestions } from '../../data/reactQuestions';
 import { ChevronDown } from 'lucide-react';
+import { TopicData } from '../../types/questions';
 
 type Difficulty = 'beginner' | 'intermediate' | 'advanced' | 'expert' | 'all';
 
@@ -16,12 +17,6 @@ interface Question {
     question: string;
     answer: string;
   }>;
-}
-
-interface TopicData {
-  title: string;
-  description: string;
-  questions: Question[];
 }
 
 export default function TopicPage() {

@@ -45,7 +45,7 @@ export const reactQuestions: QuestionsData = {
   },
   'components': {
     title: 'Components & Props',
-    description: 'Understanding React components, props, and component lifecycle',
+    description: 'Understanding React components and props',
     questions: [
       {
         title: 'What are React components and how are they classified?',
@@ -69,7 +69,7 @@ export const reactQuestions: QuestionsData = {
   },
   'lifecycle': {
     title: 'React Lifecycle',
-    description: 'Understanding component lifecycle methods and hooks equivalents',
+    description: 'Component lifecycle methods and hooks',
     questions: [
       {
         title: 'What are lifecycle methods in React?',
@@ -139,13 +139,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'forms-events': {
-    title: 'Forms and Events',
-    description: 'Handling forms and events in React applications',
+  'forms-handling': {
+    title: 'Form Handling',
+    description: 'Techniques for handling forms in React applications',
     questions: [
       {
         title: 'How do you handle forms in React?',
-        category: 'forms-events',
+        category: 'forms-handling',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'React forms can be controlled (React manages form data) or uncontrolled (DOM manages form data). Controlled components use state to handle form inputs.',
@@ -187,61 +187,103 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'testing': {
+  'testing-practices': {
     title: 'Testing React Applications',
-    description: 'Strategies and tools for testing React components',
+    description: 'Best practices and strategies for testing React components',
     questions: [
       {
-        title: 'How do you test React components?',
-        category: 'testing',
+        title: 'How do you test React components with React Testing Library?',
+        category: 'testing-practices',
         difficulty: 'intermediate',
         language: 'react',
-        answer: 'Use Jest as the test runner and React Testing Library for component testing. Focus on testing behavior rather than implementation details.',
+        answer: 'React Testing Library focuses on testing components from a user perspective, emphasizing accessibility and user interactions.',
         subQuestions: [
           {
-            question: 'What is the difference between unit and integration tests?',
-            answer: 'Unit tests focus on individual components in isolation. Integration tests verify how components work together.'
+            question: 'Why is React Testing Library preferred over Enzyme?',
+            answer: 'It promotes better testing practices by focusing on user behavior rather than implementation details, and encourages accessibility-first development.'
           },
           {
-            question: 'How do you test custom hooks?',
-            answer: 'Use @testing-library/react-hooks to test custom hooks in isolation, or test them through components that use them.'
+            question: 'How do you test asynchronous operations?',
+            answer: 'Use waitFor, findBy queries, and act for handling async operations, state updates, and effects in tests.'
           }
         ],
-        tags: ['testing', 'jest', 'rtl']
+        tags: ['testing', 'rtl', 'jest']
+      },
+      {
+        title: 'What is snapshot testing and when should you use it?',
+        category: 'testing-practices',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'Snapshot testing captures a serialized version of component output and compares it against future changes to detect unintended modifications.',
+        subQuestions: [
+          {
+            question: 'What are the benefits of snapshot testing?',
+            answer: 'Quick regression testing, easy to update when changes are intentional, and helps catch unintended UI changes.'
+          },
+          {
+            question: 'What are the limitations of snapshot testing?',
+            answer: 'Can be brittle with frequently changing UI, may give false confidence, and requires careful review of snapshot diffs.'
+          }
+        ],
+        tags: ['testing', 'snapshot', 'jest']
       }
     ]
   },
-  'patterns': {
-    title: 'React Patterns',
+  'patterns-basics': {
+    title: 'React Design Patterns',
+    description: 'Basic design patterns and best practices in React',
+    questions: [
+      {
+        title: 'What are common React design patterns?',
+        category: 'patterns-basics',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'React supports various design patterns like Container/Presentational, Higher-Order Components (HOCs), Render Props, and Custom Hooks.',
+        subQuestions: [
+          {
+            question: 'When should you use HOCs vs Render Props?',
+            answer: 'Use HOCs for reusable component logic that doesn\'t need frequent updates. Use Render Props for more flexible sharing of dynamic data and behavior.'
+          },
+          {
+            question: 'What are the advantages of Container/Presentational pattern?',
+            answer: 'Separates data fetching from presentation, improves reusability, and makes testing easier by isolating concerns.'
+          }
+        ],
+        tags: ['patterns', 'composition', 'architecture']
+      }
+    ]
+  },
+  'patterns-advanced': {
+    title: 'Advanced React Patterns',
     description: 'Common design patterns and best practices in React',
     questions: [
       {
-        title: 'What are Higher Order Components (HOCs)?',
-        category: 'patterns',
+        title: 'What are advanced React design patterns?',
+        category: 'patterns-advanced',
         difficulty: 'advanced',
         language: 'react',
-        answer: 'HOCs are functions that take a component and return a new component with additional props or behavior. They\'re used for cross-cutting concerns like authentication or data fetching.',
+        answer: 'React supports various composition patterns like Compound Components, Higher-Order Components (HOCs), Render Props, and Custom Hooks.',
         subQuestions: [
           {
-            question: 'What are the alternatives to HOCs?',
-            answer: 'Render props and custom hooks are modern alternatives that often provide cleaner solutions with better TypeScript support.'
+            question: 'When should you use Compound Components?',
+            answer: 'Use when building flexible, reusable component systems that need to share state while maintaining a clean API.'
           },
           {
-            question: 'When should you use HOCs vs hooks?',
-            answer: 'Use hooks for sharing logic between components. Use HOCs when you need to wrap components with additional markup or modify their rendered output.'
+            question: 'How do you implement Compound Components?',
+            answer: 'Use React.Children.map for child manipulation, Context for state sharing, and clear component interfaces.'
           }
         ],
-        tags: ['patterns', 'hoc', 'best-practices']
+        tags: ['patterns', 'components', 'design']
       }
     ]
   },
-  'architecture': {
-    title: 'Application Architecture',
-    description: 'Best practices for structuring React applications',
+  'architecture-basics': {
+    title: 'React Architecture Fundamentals',
+    description: 'Basic architectural patterns and approaches in React',
     questions: [
       {
         title: 'How do you structure a large React application?',
-        category: 'architecture',
+        category: 'architecture-basics',
         difficulty: 'expert',
         language: 'react',
         answer: 'Use a feature-based structure, implement proper code splitting, separate business logic from UI components, and follow consistent naming conventions.',
@@ -256,6 +298,48 @@ export const reactQuestions: QuestionsData = {
           }
         ],
         tags: ['architecture', 'structure', 'organization']
+      }
+    ]
+  },
+  'architecture-patterns': {
+    title: 'React Architecture Patterns',
+    description: 'Design patterns and architectural approaches in React applications',
+    questions: [
+      {
+        title: 'What is the difference between state lifting and prop drilling?',
+        category: 'architecture-patterns',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'State lifting moves state up to a common ancestor component, while prop drilling passes props through intermediate components that don\'t need them.',
+        subQuestions: [
+          {
+            question: 'When should you lift state up?',
+            answer: 'Lift state when multiple components need to share or modify the same data, or when child components need to communicate with each other.'
+          },
+          {
+            question: 'How do you avoid prop drilling?',
+            answer: 'Use Context API for global state, composition patterns, or state management libraries like Redux or Zustand.'
+          }
+        ],
+        tags: ['architecture', 'state-management', 'patterns']
+      },
+      {
+        title: 'What are the different component composition patterns in React?',
+        category: 'architecture-patterns',
+        difficulty: 'advanced',
+        language: 'react',
+        answer: 'React supports various composition patterns like Container/Presentational, Higher-Order Components (HOCs), Render Props, and Custom Hooks.',
+        subQuestions: [
+          {
+            question: 'When should you use HOCs vs Render Props?',
+            answer: 'Use HOCs for reusable component logic that doesn\'t need frequent updates. Use Render Props for more flexible sharing of dynamic data and behavior.'
+          },
+          {
+            question: 'What are the advantages of Container/Presentational pattern?',
+            answer: 'Separates data fetching from presentation, improves reusability, and makes testing easier by isolating concerns.'
+          }
+        ],
+        tags: ['patterns', 'composition', 'architecture']
       }
     ]
   },
@@ -283,13 +367,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'styling': {
+  'styling-basics': {
     title: 'Styling in React',
     description: 'Different approaches to styling React components',
     questions: [
       {
         title: 'What are the different ways to style React components?',
-        category: 'styling',
+        category: 'styling-basics',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'React components can be styled using CSS modules, styled-components, Tailwind CSS, inline styles, or traditional CSS/SASS files.',
@@ -517,13 +601,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'error-handling': {
-    title: 'Error Handling',
-    description: 'Strategies for handling errors in React applications',
+  'error-handling-basics': {
+    title: 'Error Handling Basics',
+    description: 'Basic error handling techniques in React applications',
     questions: [
       {
         title: 'What are error boundaries in React?',
-        category: 'error-handling',
+        category: 'error-handling-basics',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'Error boundaries are React components that catch JavaScript errors in their child component tree and display fallback UI instead of crashing.',
@@ -534,20 +618,20 @@ export const reactQuestions: QuestionsData = {
           },
           {
             question: 'What are the best practices for debugging React applications?',
-            answer: 'Use React Developer Tools, implement proper error logging, use Error Boundaries, and add meaningful error messages.'
+            answer: 'Use React DevTools, browser debugger, proper error boundaries, and logging. Implement comprehensive error handling and monitoring.'
           }
         ],
         tags: ['error-boundaries', 'debugging', 'best-practices']
       }
     ]
   },
-  'security': {
-    title: 'Security in React',
-    description: 'Best practices for securing React applications',
+  'security-basics': {
+    title: 'React Security',
+    description: 'Basic security concepts and practices in React',
     questions: [
       {
         title: 'How do you implement secure authentication in React?',
-        category: 'security',
+        category: 'security-basics',
         difficulty: 'advanced',
         language: 'react',
         answer: 'Implement JWT-based authentication, use HTTP-only cookies, protect routes, and handle token refresh securely.',
@@ -565,27 +649,51 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'accessibility': {
-    title: 'Accessibility in React',
-    description: 'Making React applications accessible to all users',
+  'accessibility-basics': {
+    title: 'Accessibility Fundamentals',
+    description: 'Basic concepts of accessibility in React applications',
     questions: [
       {
-        title: 'What are the best practices for building accessible React apps?',
-        category: 'accessibility',
+        title: 'What are the basic principles of web accessibility?',
+        category: 'accessibility-basics',
         difficulty: 'intermediate',
         language: 'react',
-        answer: 'Use semantic HTML, implement ARIA attributes, ensure keyboard navigation, and test with screen readers.',
+        answer: 'Use semantic HTML, ARIA attributes, keyboard navigation, and follow WCAG guidelines.',
         subQuestions: [
           {
-            question: 'How do you handle keyboard navigation?',
-            answer: 'Implement proper focus management, use tabIndex appropriately, and ensure all interactive elements are keyboard accessible.'
+            question: 'What are important ARIA roles?',
+            answer: 'Use roles like button, navigation, main, dialog for proper semantic meaning and screen reader support.'
           },
           {
-            question: 'What tools can help with accessibility testing?',
-            answer: 'Use tools like React-Axe, WAVE, and Lighthouse for automated accessibility testing, and test manually with screen readers.'
+            question: 'How do you handle focus management?',
+            answer: 'Implement proper focus trapping in modals, maintain focus order, and provide skip links.'
           }
         ],
-        tags: ['accessibility', 'a11y', 'aria']
+        tags: ['accessibility', 'aria', 'wcag']
+      }
+    ]
+  },
+  'accessibility-advanced': {
+    title: 'Advanced Accessibility',
+    description: 'Advanced techniques for making React applications accessible',
+    questions: [
+      {
+        title: 'How do you implement advanced accessibility features?',
+        category: 'accessibility-advanced',
+        difficulty: 'advanced',
+        language: 'react',
+        answer: 'Use tools like axe-core, jest-axe, and manual testing with screen readers.',
+        subQuestions: [
+          {
+            question: 'What are common accessibility issues?',
+            answer: 'Missing alt text, improper heading hierarchy, lack of keyboard navigation, and poor color contrast.'
+          },
+          {
+            question: 'How do you automate accessibility testing?',
+            answer: 'Integrate axe-core with testing library, use ESLint a11y plugins, and implement CI/CD checks.'
+          }
+        ],
+        tags: ['testing', 'automation', 'screen-readers']
       }
     ]
   },
@@ -697,13 +805,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'state-management': {
+  'state-management-basics': {
     title: 'State Management',
     description: 'Different approaches to managing state in React applications',
     questions: [
       {
         title: 'How do you implement state management using Zustand?',
-        category: 'state-management',
+        category: 'state-management-basics',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'Zustand is a small, fast state management solution that uses hooks. Create stores with simple actions and access state with the useStore hook.',
@@ -805,16 +913,16 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'testing': {
+  'testing-advanced': {
     title: 'Testing React Applications',
     description: 'Best practices and approaches for testing React components',
     questions: [
       {
         title: 'How do you test React components with React Testing Library?',
-        category: 'testing',
+        category: 'testing-advanced',
         difficulty: 'intermediate',
         language: 'react',
-        answer: 'React Testing Library focuses on testing components from a user perspective, emphasizing user interactions and accessibility.',
+        answer: 'React Testing Library focuses on testing components from a user perspective, emphasizing accessibility and user interactions.',
         subQuestions: [
           {
             question: 'Why is React Testing Library preferred over Enzyme?',
@@ -829,7 +937,7 @@ export const reactQuestions: QuestionsData = {
       },
       {
         title: 'What is snapshot testing and when should you use it?',
-        category: 'testing',
+        category: 'testing-advanced',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'Snapshot testing captures a serialized version of component output and compares it against future changes to detect unintended modifications.',
@@ -847,13 +955,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'security': {
+  'security-advanced': {
     title: 'React Security',
     description: 'Security best practices and common vulnerabilities in React applications',
     questions: [
       {
         title: 'How do you handle authentication and authorization in React?',
-        category: 'security',
+        category: 'security-advanced',
         difficulty: 'advanced',
         language: 'react',
         answer: 'Implement JWT or session-based auth, protect routes with guards, handle token storage securely, and validate user permissions.',
@@ -871,13 +979,13 @@ export const reactQuestions: QuestionsData = {
       },
       {
         title: 'How do you prevent XSS attacks in React?',
-        category: 'security',
+        category: 'security-advanced',
         difficulty: 'advanced',
         language: 'react',
         answer: 'React automatically escapes content by default, but you need to be careful with dangerouslySetInnerHTML, user input, and third-party scripts.',
         subQuestions: [
           {
-            question: 'What are the common XSS vulnerabilities?',
+            question: 'What are common XSS vulnerabilities?',
             answer: 'Unsafe use of dangerouslySetInnerHTML, direct DOM manipulation, and injection through URL parameters or form inputs.'
           },
           {
@@ -1064,7 +1172,7 @@ export const reactQuestions: QuestionsData = {
       {
         title: 'What is React and how does it differ from other frameworks?',
         category: 'core-concepts',
-        difficulty: 'beginner',
+        difficulty: 'basic',
         language: 'react',
         answer: 'React is a JavaScript library for building user interfaces. It uses a Virtual DOM, component-based architecture, and one-way data flow.',
         subQuestions: [
@@ -1326,7 +1434,7 @@ export const reactQuestions: QuestionsData = {
           },
           {
             question: 'When might you still use class components?',
-            answer: 'Legacy code maintenance, when using error boundaries (prior to React 18), or when specific lifecycle methods are needed.'
+            answer: 'When you need a full-featured framework, prefer TypeScript by default, or want built-in solutions for common features.'
           }
         ],
         tags: ['components', 'classes', 'functions']
@@ -1357,13 +1465,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'error-handling': {
-    title: 'Error Handling',
+  'error-handling-advanced': {
+    title: 'Advanced Error Handling',
     description: 'Techniques for handling errors in React applications',
     questions: [
       {
         title: 'What are Error Boundaries and how do they work?',
-        category: 'error-handling',
+        category: 'error-handling-advanced',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'Error Boundaries are components that catch JavaScript errors in child components, log errors, and display fallback UI.',
@@ -1436,11 +1544,11 @@ export const reactQuestions: QuestionsData = {
         subQuestions: [
           {
             question: 'What is the difference between controlled and uncontrolled components?',
-            answer: 'Controlled components have their form data controlled by React state, while uncontrolled components maintain their own internal state.'
+            answer: 'Controlled components store form data in state and update via onChange. Uncontrolled components use refs to access form values directly from DOM.'
           },
           {
             question: 'How do you handle form validation?',
-            answer: 'Use libraries like Formik or React Hook Form, or implement custom validation using state and validation functions.'
+            answer: 'Use state to track validation errors, validate on change/submit, and display error messages. Can also use libraries like Formik or React Hook Form.'
           }
         ],
         tags: ['forms', 'validation', 'state']
@@ -1465,45 +1573,51 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'routing': {
-    title: 'React Router and Navigation',
-    description: 'Implementing routing and navigation in React applications',
+  'routing-basics': {
+    title: 'React Router Basics',
+    description: 'Basic concepts of routing in React applications',
     questions: [
       {
-        title: 'What is the difference between React Router v5 and v6?',
-        category: 'routing',
+        title: 'How do you implement basic routing in React?',
+        category: 'routing-basics',
         difficulty: 'intermediate',
         language: 'react',
-        answer: 'React Router v6 introduces new features like hooks-based API, automatic route ranking, and relative routing.',
+        answer: 'Use React Router for client-side routing, implement routes with Route components, and handle navigation with Link components.',
         subQuestions: [
           {
-            question: 'What are the key changes in v6?',
-            answer: 'New hooks like useNavigate, removal of Switch in favor of Routes, and changes to route path matching.'
+            question: 'What are the key components of React Router?',
+            answer: 'Route, Link, Switch, and BrowserRouter are essential components for setting up routing.'
           },
           {
-            question: 'How do you handle nested routes in v6?',
-            answer: 'Use parent routes with Outlet component and relative paths for nested route definitions.'
+            question: 'How do you handle route parameters?',
+            answer: 'Use the useParams hook to access route parameters, and implement dynamic routing with parameterized routes.'
           }
         ],
         tags: ['routing', 'react-router', 'navigation']
-      },
+      }
+    ]
+  },
+  'routing-advanced': {
+    title: 'Advanced Routing',
+    description: 'Advanced routing concepts and techniques',
+    questions: [
       {
-        title: 'How do you implement protected routes?',
-        category: 'routing',
-        difficulty: 'intermediate',
+        title: 'How do you handle complex routing scenarios?',
+        category: 'routing-advanced',
+        difficulty: 'advanced',
         language: 'react',
-        answer: 'Create a wrapper component that checks authentication state and redirects unauthorized users.',
+        answer: 'Use nested routes, implement route protection with authentication, and handle dynamic routing with server-side rendering.',
         subQuestions: [
           {
-            question: 'What is the best way to handle authentication with routing?',
-            answer: 'Use context or state management for auth state, implement route guards, and handle redirects.'
+            question: 'What are the benefits of using a routing library?',
+            answer: 'Simplifies client-side routing, provides features like route protection and dynamic routing, and improves code organization.'
           },
           {
-            question: 'How do you preserve route history?',
-            answer: 'Use location state to store previous paths, implement breadcrumbs, or use history stack.'
+            question: 'How do you handle routing in a large application?',
+            answer: 'Split routes into smaller modules, implement a routing hierarchy, and use route configuration files.'
           }
         ],
-        tags: ['routing', 'authentication', 'security']
+        tags: ['routing', 'react-router', 'advanced']
       }
     ]
   },
@@ -1566,7 +1680,7 @@ export const reactQuestions: QuestionsData = {
           },
           {
             question: 'How do you test asynchronous operations?',
-            answer: 'Use waitFor, findBy queries, and act for handling async updates and state changes.'
+            answer: 'Use waitFor, findBy queries, and act for handling async operations, state updates, and effects in tests.'
           }
         ],
         tags: ['testing', 'rtl', 'accessibility']
@@ -1675,13 +1789,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'security': {
+  'security-best-practices': {
     title: 'Security Best Practices',
     description: 'Security considerations and best practices in React applications',
     questions: [
       {
         title: 'What are common security vulnerabilities in React applications?',
-        category: 'security',
+        category: 'security-best-practices',
         difficulty: 'advanced',
         language: 'react',
         answer: 'Common vulnerabilities include XSS attacks, CSRF, insecure dependencies, and improper data exposure.',
@@ -1699,7 +1813,7 @@ export const reactQuestions: QuestionsData = {
       },
       {
         title: 'How do you implement secure authentication in React?',
-        category: 'security',
+        category: 'security-best-practices',
         difficulty: 'advanced',
         language: 'react',
         answer: 'Use JWT tokens, implement proper session management, and follow OAuth/OIDC best practices.',
@@ -1936,7 +2050,7 @@ export const reactQuestions: QuestionsData = {
         category: 'component-patterns',
         difficulty: 'advanced',
         language: 'react',
-        answer: 'Container/Presentational, Compound Components, Render Props, and Higher-Order Components.',
+        answer: 'React supports various design patterns like Container/Presentational, Higher-Order Components (HOCs), Render Props, and Custom Hooks.',
         subQuestions: [
           {
             question: 'When should you use Render Props?',
@@ -1969,13 +2083,13 @@ export const reactQuestions: QuestionsData = {
       }
     ]
   },
-  'styling': {
+  'styling-advanced': {
     title: 'Styling and UI',
     description: 'Different approaches to styling React applications',
     questions: [
       {
         title: 'What are different styling approaches in React?',
-        category: 'styling',
+        category: 'styling-advanced',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'React components can be styled using CSS modules, styled-components, Tailwind CSS, inline styles, or traditional CSS/SASS files.',
@@ -1993,7 +2107,7 @@ export const reactQuestions: QuestionsData = {
       },
       {
         title: 'How do you handle responsive design in React?',
-        category: 'styling',
+        category: 'styling-advanced',
         difficulty: 'intermediate',
         language: 'react',
         answer: 'Use media queries, CSS Grid/Flexbox, and responsive design patterns.',
@@ -2008,6 +2122,102 @@ export const reactQuestions: QuestionsData = {
           }
         ],
         tags: ['responsive', 'mobile', 'layout']
+      }
+    ]
+  },
+  'performance-basics': {
+    title: 'React Performance',
+    description: 'Basic performance concepts and optimizations',
+    questions: [
+      {
+        title: 'What are the basic ways to optimize React performance?',
+        category: 'performance-basics',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'React performance can be optimized through code splitting, lazy loading, memoization, and proper key usage in lists.',
+        subQuestions: [
+          {
+            question: 'What is code splitting and how does it help?',
+            answer: 'Code splitting breaks down large bundles into smaller chunks that can be loaded on demand, improving initial load time.'
+          },
+          {
+            question: 'How do you prevent unnecessary re-renders?',
+            answer: 'Use React.memo for functional components, implement shouldComponentUpdate in class components, and use useMemo/useCallback for expensive computations.'
+          }
+        ],
+        tags: ['performance', 'optimization', 'rendering']
+      }
+    ]
+  },
+  'performance-optimization-advanced': {
+    title: 'Advanced Performance Optimization',
+    description: 'Advanced techniques for optimizing React application performance',
+    questions: [
+      {
+        title: 'What are advanced techniques for React performance optimization?',
+        category: 'performance-optimization-advanced',
+        difficulty: 'advanced',
+        language: 'react',
+        answer: 'Use techniques like virtualization for long lists, proper key usage, and avoiding unnecessary re-renders.',
+        subQuestions: [
+          {
+            question: 'What is virtualization and how does it help?',
+            answer: 'Virtualization renders only visible items in long lists, improving rendering performance and reducing memory usage.'
+          },
+          {
+            question: 'How do you implement virtualization?',
+            answer: 'Use libraries like react-window or react-virtualized to render only visible items in long lists.'
+          }
+        ],
+        tags: ['performance', 'optimization', 'virtualization']
+      }
+    ]
+  },
+  'state-management-core': {
+    title: 'Core State Management',
+    description: 'Core concepts of state management in React',
+    questions: [
+      {
+        title: 'What are the different approaches to state management?',
+        category: 'state-management-core',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'React applications can use local state, Context API, Redux, or other state management libraries.',
+        subQuestions: [
+          {
+            question: 'What are the benefits of using Context API?',
+            answer: 'Built-in, easy to use, and suitable for simple state sharing.'
+          },
+          {
+            question: 'How do you handle complex state logic?',
+            answer: 'Use Redux or other state management libraries for complex state logic and side effects.'
+          }
+        ],
+        tags: ['state', 'context', 'redux']
+      }
+    ]
+  },
+  'components-core': {
+    title: 'React Components',
+    description: 'Core concepts of React components',
+    questions: [
+      {
+        title: 'What are the different types of React components?',
+        category: 'components-core',
+        difficulty: 'intermediate',
+        language: 'react',
+        answer: 'React components can be functional or class-based, and can use hooks for state and lifecycle management.',
+        subQuestions: [
+          {
+            question: 'What are the benefits of functional components?',
+            answer: 'Simpler syntax, better performance, and easier testing.'
+          },
+          {
+            question: 'How do you handle component lifecycle?',
+            answer: 'Use lifecycle methods in class components, or useEffect hook in functional components.'
+          }
+        ],
+        tags: ['components', 'functional', 'class']
       }
     ]
   }
