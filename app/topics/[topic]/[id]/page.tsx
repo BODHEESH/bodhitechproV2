@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { reactQuestions } from '@/app/data/reactQuestions';
+import { reactQuestions } from '../../../data/reactQuestions';
 
 export default function TopicQuestionsPage() {
   const { topic, id } = useParams();
