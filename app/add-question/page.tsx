@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Plus, 
-  Minus, 
-  Tag, 
-  Loader2, 
-  CheckCircle2, 
-  AlertCircle, 
+import {
+  Plus,
+  Minus,
+  Tag,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
   X,
   Sparkles,
   BookOpen,
@@ -171,7 +171,7 @@ export default function AddQuestionPage() {
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Title Section */}
-            <motion.div 
+            <motion.div
               className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
@@ -210,7 +210,7 @@ export default function AddQuestionPage() {
             </motion.div>
 
             {/* Difficulty and Language Section */}
-            <motion.div 
+            <motion.div
               className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
@@ -227,9 +227,8 @@ export default function AddQuestionPage() {
                   <select
                     value={formData.difficulty}
                     onChange={(e) => setFormData({ ...formData, difficulty: e.target.value })}
-                    className={`w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors ${
-                      formData.difficulty ? difficultyColors[formData.difficulty as keyof typeof difficultyColors] : ''
-                    }`}
+                    className={`w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors ${formData.difficulty ? difficultyColors[formData.difficulty as keyof typeof difficultyColors] : ''
+                      }`}
                     required
                   >
                     <option value="">Select Difficulty</option>
@@ -255,13 +254,58 @@ export default function AddQuestionPage() {
                     <option value="javascript">JavaScript 💛</option>
                     <option value="typescript">TypeScript 💙</option>
                     <option value="nodejs">Node.js 💚</option>
+                    <option value="python">Python 🐍</option>
+                    <option value="java">Java ☕</option>
+                    <option value="csharp">C# 💼</option>
+                    <option value="cpp">C++ 🔵</option>
+                    <option value="c">C 🚀</option>
+                    <option value="php">PHP 💜</option>
+                    <option value="ruby">Ruby 💎</option>
+                    <option value="kotlin">Kotlin 🧡</option>
+                    <option value="swift">Swift 🍎</option>
+                    <option value="dart">Dart 🎯</option>
+                    <option value="go">Go (Golang) 🦫</option>
+                    <option value="rust">Rust 🦀</option>
+                    <option value="html">HTML 🖍️</option>
+                    <option value="css">CSS 🎨</option>
+                    <option value="scss">SCSS 💄</option>
+                    <option value="sql">SQL 📊</option>
+                    <option value="mongodb">MongoDB 🍃</option>
+                    <option value="mysql">MySQL 🐬</option>
+                    <option value="postgresql">PostgreSQL 🐘</option>
+                    <option value="firebase">Firebase 🔥</option>
+                    <option value="graphql">GraphQL 📡</option>
+                    <option value="bash">Bash 💻</option>
+                    <option value="shell">Shell Script 🐚</option>
+                    <option value="perl">Perl 🧶</option>
+                    <option value="scala">Scala 🛡️</option>
+                    <option value="matlab">MATLAB 🔢</option>
+                    <option value="r">R 📊</option>
+                    <option value="assembly">Assembly 🛠️</option>
+                    <option value="haskell">Haskell 🔷</option>
+                    <option value="vuejs">Vue.js 🌿</option>
+                    <option value="angular">Angular 🔺</option>
+                    <option value="svelte">Svelte 🧡</option>
+                    <option value="flutter">Flutter 🦋</option>
+                    <option value="django">Django 🟢</option>
+                    <option value="flask">Flask 🔥</option>
+                    <option value="laravel">Laravel ❤️</option>
+                    <option value="spring">Spring 🍃</option>
+                    <option value="express">Express 🖤</option>
+                    <option value="nextjs">Next.js ⚡</option>
+                    <option value="nestjs">NestJS 🐦</option>
+                    <option value="strapi">Strapi 🚀</option>
+                    <option value="dotnet">.NET 🛠️</option>
+                    <option value="elixir">Elixir 💧</option>
+                    <option value="lua">Lua 🔵</option>
+                    <option value="tailwindcss">Tailwind CSS 🌬️</option>
                   </select>
                 </div>
               </div>
             </motion.div>
 
             {/* Answer Section */}
-            <motion.div 
+            <motion.div
               className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
@@ -284,8 +328,85 @@ export default function AddQuestionPage() {
               </div>
             </motion.div>
 
+            {/* Sub Questions Section */}
+            <motion.div
+              className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-blue-500" />
+                  <h2 className="text-xl font-semibold">Sub Questions 📚</h2>
+                </div>
+                <motion.button
+                  type="button"
+                  onClick={addSubQuestion}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 rounded-xl bg-blue-500/10 text-blue-500 font-medium hover:bg-blue-500/20 transition-colors flex items-center gap-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  Add Sub Question
+                </motion.button>
+              </div>
+
+              <AnimatePresence>
+                {formData.subQuestions.map((subQ, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="space-y-4 p-4 rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm mb-4 last:mb-0"
+                  >
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="h-6 w-6 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center text-sm font-medium">
+                          {index + 1}
+                        </div>
+                        <h3 className="text-sm font-medium">Sub Question {index + 1}</h3>
+                      </div>
+                      {index > 0 && (
+                        <motion.button
+                          type="button"
+                          onClick={() => removeSubQuestion(index)}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="p-2 rounded-full hover:bg-red-500/10 text-red-500 transition-colors"
+                        >
+                          <Minus className="h-4 w-4" />
+                        </motion.button>
+                      )}
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <input
+                          type="text"
+                          value={subQ.question}
+                          onChange={(e) => updateSubQuestion(index, 'question', e.target.value)}
+                          placeholder="Enter sub question"
+                          className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <textarea
+                          value={subQ.answer}
+                          onChange={(e) => updateSubQuestion(index, 'answer', e.target.value)}
+                          placeholder="Enter answer for sub question"
+                          rows={3}
+                          className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+
             {/* Tags Section */}
-            <motion.div 
+            <motion.div
               className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
