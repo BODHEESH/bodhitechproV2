@@ -29,18 +29,31 @@ BodhiTech Pro is more than just an interview preparation platform - it's your co
 - **Interactive Elements**: Smooth transitions and hover effects
 - **Responsive Layout**: Perfect experience on any device
 - **Glass-morphism Effects**: Modern, trendy visual elements
+- **Custom Avatars**: Personalized user profiles with image upload
+- **Dark/Light Mode**: Theme customization for better readability
+
+### 👤 User Management
+- **Authentication**: Secure login and registration system
+- **Protected Routes**: Access control for authenticated users
+- **Profile Management**: Customizable user profiles with avatars
+- **User Contributions**: Track and display user-contributed questions
+- **Community Features**: User interaction and content sharing
 
 ### 📚 Content Organization
 - **Topic-based Learning**: Structured content organization
 - **Difficulty Levels**: From basic to expert
 - **Smart Filtering**: Easy navigation through content
 - **Related Questions**: Connected learning paths
+- **User Attribution**: Questions tagged with contributor information
+- **Community Questions**: Shared knowledge from the community
 
 ### 🔍 Smart Features
 - **Intelligent Search**: Find exactly what you need
 - **Progress Tracking**: Monitor your learning journey
 - **Interactive Feedback**: Engage with the content
 - **Dynamic Loading**: Smooth content delivery
+- **User Analytics**: Track your contributions and progress
+- **Question Management**: Add, edit, and delete your questions
 
 ## 🛠️ Technical Architecture
 
@@ -53,6 +66,23 @@ BodhiTech Pro is more than just an interview preparation platform - it's your co
   - Glass-morphism effects
 - **State Management**: React Hooks and Context
 - **Icons**: Lucide React for consistent iconography
+- **Image Handling**: Base64 encoding for avatar storage
+
+### Backend
+- **Database**: MongoDB for flexible data storage
+- **Authentication**: JWT-based auth with HTTP-only cookies
+- **API Routes**: Next.js API routes for server-side logic
+- **Middleware**: Custom auth middleware for route protection
+- **File Handling**: Base64 image processing for avatars
+- **Data Models**: Mongoose schemas for data validation
+
+### Security
+- **Route Protection**: Middleware-based access control
+- **Authentication Flow**: Secure token-based authentication
+- **Protected API Routes**: Authenticated API endpoints
+- **Secure Cookies**: HTTP-only cookies for token storage
+- **Input Validation**: Server-side data validation
+- **Error Handling**: Comprehensive error management
 
 ### Performance
 - **Optimizations**:
@@ -64,6 +94,8 @@ BodhiTech Pro is more than just an interview preparation platform - it's your co
   - Hardware-accelerated animations
   - Smooth page transitions
   - Optimized motion effects
+- **Caching**: Browser-side caching for better performance
+- **Lazy Loading**: Dynamic imports for better initial load time
 
 ## 🚀 Getting Started
 
