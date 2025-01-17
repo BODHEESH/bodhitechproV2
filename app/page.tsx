@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Rocket, Brain, Target, Sparkles, Code2, Users, Zap, ArrowRight, BookOpen, Mail, Globe, Laptop, Shield, Clock, Trophy, Star } from 'lucide-react';
+import { Rocket, Brain, Target, Sparkles, Code2, Users, Zap, ArrowRight, BookOpen, Mail, Globe, Laptop, Shield, Clock, Trophy, Star, Linkedin, Youtube } from 'lucide-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -166,23 +166,23 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto"
             >
-              <Link href="/dashboard">
+              <Link href="/dashboard" className="w-full sm:w-auto flex justify-center">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-medium flex items-center gap-2 group"
+                  className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-medium flex items-center gap-2 group w-full sm:w-auto justify-center"
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
-              <Link href="/add-question">
+              <Link href="/add-question" className="w-full sm:w-auto flex justify-center">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-xl border border-border bg-background/50 backdrop-blur-sm font-medium flex items-center gap-2 group hover:border-primary/50 transition-colors"
+                  className="px-8 py-4 rounded-xl border border-border bg-background/50 backdrop-blur-sm font-medium flex items-center gap-2 group hover:border-primary/50 transition-colors w-full sm:w-auto justify-center"
                 >
                   Add Question
                   <Sparkles className="h-4 w-4 group-hover:text-primary transition-colors" />
@@ -378,13 +378,49 @@ export default function Home() {
                 <div>
                   <h3 className="font-semibold mb-4">Contact</h3>
                   <ul className="space-y-2">
-                    <li className="flex items-center gap-2 text-muted-foreground">
-                      <Mail className="h-4 w-4" />
-                      support@bodhitech.pro
+                    <li>
+                      <Link 
+                        href="https://www.linkedin.com/in/bodheeshvc" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                        Contact Bodhi
+                      </Link>
                     </li>
-                    <li className="flex items-center gap-2 text-muted-foreground">
-                      <Globe className="h-4 w-4" />
-                      www.bodhitech.pro
+                    <li>
+                      <Link 
+                        href="https://www.youtube.com/@BodhiTechTalks" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <Youtube className="h-4 w-4" />
+                        BodhiTech Talks
+                      </Link>
+                    </li>
+                    <li className="space-y-1">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Mail className="h-4 w-4 flex-shrink-0" />
+                        <div className="flex flex-col">
+                          <span>support@bodhitech.pro</span>
+                          <span>support@bodhilearning.com</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="space-y-1">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Globe className="h-4 w-4 flex-shrink-0" />
+                        <div className="flex flex-col">
+                          <Link href="https://www.bodhilearning.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                            www.bodhilearning.com
+                          </Link>
+                          <Link href="https://www.bodhitech.pro" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                            www.bodhitech.pro
+                          </Link>
+                        </div>
+                      </div>
                     </li>
                   </ul>
                 </div>
