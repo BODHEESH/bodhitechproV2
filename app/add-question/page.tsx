@@ -41,6 +41,7 @@ export default function AddQuestionPage() {
     answer: '',
     difficulty: '',
     language: '',
+    topic: 'react-basics',
     tags: [] as string[],
     subQuestions: [{ question: '', answer: '' }] as { question: string; answer: string }[],
   });
@@ -81,6 +82,7 @@ export default function AddQuestionPage() {
         answer: '',
         difficulty: '',
         language: '',
+        topic: 'react-basics',
         tags: [],
         subQuestions: [{ question: '', answer: '' }],
       });
@@ -198,6 +200,7 @@ export default function AddQuestionPage() {
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Description
+                    <span className="text-xs text-muted-foreground ml-1">(Optional)</span>
                   </label>
                   <textarea
                     value={formData.description}
@@ -205,6 +208,40 @@ export default function AddQuestionPage() {
                     className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors min-h-[100px]"
                     placeholder="Add any additional context or description"
                   />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Topic Section */}
+            <motion.div
+              className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <BookOpen className="h-5 w-5 text-blue-500" />
+                <h2 className="text-xl font-semibold">Topic 📚</h2>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Topic <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={formData.topic}
+                    onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                    className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                    required
+                  >
+                    <option value="react-basics">React Basics</option>
+                    <option value="react-hooks">React Hooks</option>
+                    <option value="react-routing">React Routing</option>
+                    <option value="react-state">State Management</option>
+                    <option value="react-components">Components</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="nextjs">Next.js</option>
+                  </select>
                 </div>
               </div>
             </motion.div>
@@ -328,26 +365,26 @@ export default function AddQuestionPage() {
               </div>
             </motion.div>
 
-            {/* Sub Questions Section */}
-            <motion.div
+            {/* Related Questions Section */}
+            <motion.div 
               className="bg-card p-6 rounded-xl shadow-lg border border-border/50 backdrop-blur-sm"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-blue-500" />
-                  <h2 className="text-xl font-semibold">Sub Questions 📚</h2>
+                  <BookOpen className="h-4 w-4 text-blue-500" />
+                  <h2 className="text-lg font-semibold">Related Questions 🔗</h2>
                 </div>
                 <motion.button
                   type="button"
                   onClick={addSubQuestion}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 rounded-xl bg-blue-500/10 text-blue-500 font-medium hover:bg-blue-500/20 transition-colors flex items-center gap-2"
+                  className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-500 text-sm font-medium hover:bg-blue-500/20 transition-colors flex items-center justify-center gap-1.5"
                 >
-                  <Plus className="h-4 w-4" />
-                  Add Sub Question
+                  <Plus className="h-3.5 w-3.5" />
+                  Add Related Question
                 </motion.button>
               </div>
 
@@ -358,14 +395,14 @@ export default function AddQuestionPage() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="space-y-4 p-4 rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm mb-4 last:mb-0"
+                    className="space-y-3 p-3 rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm mb-3 last:mb-0"
                   >
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
-                        <div className="h-6 w-6 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center text-sm font-medium">
+                        <div className="h-5 w-5 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center text-xs font-medium">
                           {index + 1}
                         </div>
-                        <h3 className="text-sm font-medium">Sub Question {index + 1}</h3>
+                        <h3 className="text-sm font-medium">Related Question {index + 1}</h3>
                       </div>
                       {index > 0 && (
                         <motion.button
@@ -373,30 +410,30 @@ export default function AddQuestionPage() {
                           onClick={() => removeSubQuestion(index)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-full hover:bg-red-500/10 text-red-500 transition-colors"
+                          className="p-1.5 rounded-full hover:bg-red-500/10 text-red-500 transition-colors"
                         >
-                          <Minus className="h-4 w-4" />
+                          <Minus className="h-3.5 w-3.5" />
                         </motion.button>
                       )}
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       <div>
                         <input
                           type="text"
                           value={subQ.question}
                           onChange={(e) => updateSubQuestion(index, 'question', e.target.value)}
-                          placeholder="Enter sub question"
-                          className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                          placeholder="Enter related question"
+                          className="w-full p-2.5 text-sm rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                         />
                       </div>
                       <div>
                         <textarea
                           value={subQ.answer}
                           onChange={(e) => updateSubQuestion(index, 'answer', e.target.value)}
-                          placeholder="Enter answer for sub question"
-                          rows={3}
-                          className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                          placeholder="Enter answer for related question"
+                          rows={2}
+                          className="w-full p-2.5 text-sm rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                         />
                       </div>
                     </div>

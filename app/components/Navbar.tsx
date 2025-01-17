@@ -29,8 +29,9 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
 
   const navItems = [
-    { name: 'Home', path: '/', icon: Home },
+    // { name: 'Home', path: '/', icon: Home },
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+    { name: 'Community Questions', path: '/contributed-questions', icon: Sparkles },
     { name: 'Add Question', path: '/add-question', icon: PlusCircle },
   ];
 
@@ -135,57 +136,14 @@ export default function Navbar() {
             <Link href="/" className="flex items-center space-x-2">
               <Sparkles className="h-8 w-8 text-primary" />
               <span className="font-bold text-xl bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
-              BodhiTech Pro
+                BodhiTech Pro
               </span>
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Search Bar */}
-            <motion.div
-              ref={searchRef}
-              initial={false}
-              animate={{ width: isSearchOpen ? '300px' : '200px' }}
-              className="relative"
-            >
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search questions..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
-                />
-              </div>
 
-              <AnimatePresence>
-                {isSearchOpen && searchResults.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full mt-2 w-full bg-background rounded-xl border border-border shadow-lg overflow-hidden"
-                  >
-                    {searchResults.map((result) => (
-                      <motion.button
-                        key={result.id}
-                        onClick={() => handleResultClick(result)}
-                        className="w-full px-4 py-2 text-left hover:bg-primary/10 transition-colors flex items-center space-x-2"
-                        whileHover={{ x: 4 }}
-                      >
-                        <ChevronRight className="h-4 w-4 text-primary" />
-                        <div>
-                          <p className="font-medium">{result.title}</p>
-                          <p className="text-xs text-muted-foreground">{result.type}</p>
-                        </div>
-                      </motion.button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
 
             {/* Navigation Links */}
             <div className="flex items-center space-x-1">
@@ -197,11 +155,10 @@ export default function Navbar() {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${
-                        isActive
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${isActive
                           ? 'bg-primary text-primary-foreground'
                           : 'hover:bg-primary/10 text-foreground'
-                      } transition-colors duration-200`}
+                        } transition-colors duration-200`}
                     >
                       <Icon className="h-4 w-4" />
                       <span>{item.name}</span>
@@ -209,6 +166,51 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* Search Bar */}
+              <motion.div
+                ref={searchRef}
+                initial={false}
+                animate={{ width: isSearchOpen ? '300px' : '200px' }}
+                className="relative"
+              >
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Search questions..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 rounded-full bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
+                  />
+                </div>
+
+                <AnimatePresence>
+                  {isSearchOpen && searchResults.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute top-full mt-2 w-full bg-background rounded-xl border border-border shadow-lg overflow-hidden"
+                    >
+                      {searchResults.map((result) => (
+                        <motion.button
+                          key={result.id}
+                          onClick={() => handleResultClick(result)}
+                          className="w-full px-4 py-2 text-left hover:bg-primary/10 transition-colors flex items-center space-x-2"
+                          whileHover={{ x: 4 }}
+                        >
+                          <ChevronRight className="h-4 w-4 text-primary" />
+                          <div>
+                            <p className="font-medium">{result.title}</p>
+                            <p className="text-xs text-muted-foreground">{result.type}</p>
+                          </div>
+                        </motion.button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
 
               {/* Theme Toggle */}
               <motion.button
@@ -305,11 +307,10 @@ export default function Navbar() {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${
-                        isActive
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${isActive
                           ? 'bg-primary text-primary-foreground'
                           : 'hover:bg-primary/10 text-foreground'
-                      } transition-colors duration-200`}
+                        } transition-colors duration-200`}
                     >
                       <Icon className="h-4 w-4" />
                       <span>{item.name}</span>
