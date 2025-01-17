@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, Zap, Code2, Database, Layout, Server, Sparkles, BookOpen, Tag, ChevronRight, Clock, BarChart3, Trophy } from 'lucide-react';
+import { Search, Filter, Zap, Code2, Database, Layout, Server, Sparkles, BookOpen, Tag, ChevronRight, Clock, BarChart3, Trophy, UserCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 type Question = {
@@ -12,6 +12,11 @@ type Question = {
   difficulty: string;
   language: string;
   tags: string[];
+  userInfo: {
+    name: string;
+  };
+  userId: string;
+  created_user: string;
   createdAt?: string;
 };
 
@@ -170,7 +175,28 @@ export default function ContributedQuestionsPage() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-2">{question.title}</h3>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Link
+                            href={`/community-question/${question._id}`}
+                            className="text-lg font-medium hover:text-primary transition-colors line-clamp-1"
+                          >
+                            {question.title}
+                          </Link>
+                          <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <span>•</span>
+                            <UserCircle2 className="h-4 w-4" />
+                            {question.userInfo?.name ? (
+                              <Link
+                                href={`/profile/${question.created_user || question.userId}`}
+                                className="hover:text-primary transition-colors"
+                              >
+                                {question.userInfo.name}
+                              </Link>
+                            ) : (
+                              <span className="italic">Anonymous Contributor</span>
+                            )}
+                          </span>
+                        </div>
                         {question.description && (
                           <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
                             {question.description}

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Home, PlusCircle, LayoutDashboard, Menu, X, ChevronRight, Sparkles, Moon, Sun } from 'lucide-react';
+import { Search, Home, PlusCircle, LayoutDashboard, Menu, X, ChevronRight, Sparkles, Moon, Sun, UserCircle } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { reactQuestions } from '../data/reactQuestions';
 
@@ -29,10 +29,10 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
 
   const navItems = [
-    // { name: 'Home', path: '/', icon: Home },
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Community Questions', path: '/contributed-questions', icon: Sparkles },
     { name: 'Add Question', path: '/add-question', icon: PlusCircle },
+    { name: 'Profile', path: '/profile', icon: UserCircle },
   ];
 
   useEffect(() => {

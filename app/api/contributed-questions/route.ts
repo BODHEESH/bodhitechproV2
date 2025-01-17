@@ -26,7 +26,78 @@ export async function GET(request: Request) {
       ];
     }
 
-    const questions = await collection.find(query).toArray();
+    // Fetch questions with user information
+    const questions = await collection.aggregate([
+      { $match: query },
+      {
+        $addFields: {
+          hasUserId: { 
+            $cond: {
+              if: '$created_user',
+              then: true,
+              else: { $ne: ['$userId', null] }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: 'users',
+          let: { 
+            userId: { 
+              $cond: {
+                if: '$created_user',
+                then: { $toObjectId: '$created_user' },
+                else: { 
+                  $cond: {
+                    if: '$hasUserId',
+                    then: { $toObjectId: '$userId' },
+                    else: null
+                  }
+                }
+              }
+            }
+          },
+          pipeline: [
+            {
+              $match: {
+                $expr: { 
+                  $cond: {
+                    if: '$$userId',
+                    then: { $eq: ['$_id', '$$userId'] },
+                    else: false
+                  }
+                }
+              }
+            },
+            {
+              $project: {
+                name: 1,
+                email: 1
+              }
+            }
+          ],
+          as: 'userLookup'
+        }
+      },
+      {
+        $addFields: {
+          userInfo: {
+            $cond: {
+              if: { $gt: [{ $size: '$userLookup' }, 0] },
+              then: { $arrayElemAt: ['$userLookup', 0] },
+              else: '$userInfo'
+            }
+          }
+        }
+      },
+      {
+        $project: {
+          userLookup: 0,
+          hasUserId: 0
+        }
+      }
+    ]).toArray();
 
     return NextResponse.json(questions);
   } catch (error) {

@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     const data = await request.json();
     console.log('Received question data:', data);
 
+
     // Create new question
     const newQuestion = new Question(data);
     console.log('Created question model');
